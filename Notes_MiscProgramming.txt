@@ -1,0 +1,13 @@
+General Questions & POIs:
+
+Should I (and how to) install npm (node package manager...ex/ 'node.js') locally? 
+Reference:
+	a. https://getbootstrap.com/docs/4.5/getting-started/theming/ see "File Structure" 
+	b. https://docs.npmjs.com/configuring-npm/folders.html
+
+Bootstrap framework:
+There are 2 primary ways to download Bootstrap-4...
+	A) Ready-to-use compiled code (compiled & minified CSS bundles plus compiled & minified JS plugins);
+	B) Source files for Sass & JS; this approach requires a package manager (ex/ 'npm' or 'Ruby on Rails')...at minimum you'd need a Sass compiler & Autoprefixer.
+	***Bootstrap-4 works best with Option-B above***
+

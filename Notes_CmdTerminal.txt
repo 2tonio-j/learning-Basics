@@ -1,0 +1,122 @@
+Terminal (aka "Command Line") Notes <Windows>:
+
+**Use ' /?' to see HELP for any terminal cmd**
+****     Use CTL+C to stop a process      ****
+****	 Used CTL+D to......... ****
+
+-clear screen:
+	>cls
+
+-Output application version currently installed:
+	>[keyword] -v		** Works for specific application keywords (ex/ 'ruby', 'node', 'npm', 'jekyll')
+	OR
+	>[keyword] --verison	** Works when -v does not apply to keyword (ex/ 'browser-sync', etc)
+
+-A folder is called a Directory (dir);
+-The current directory you're using is called the Working Directory (wd);
+-The standard root directory is:  C:\>	this is the bottom-most directory;
+
+-To change to a different directory using command line, use 'cd':
+	>cd target_directory_name	**uses a relative path to specified directory (must be a sub-directory of wd);
+	>cd insert\target_dir\path	**uses an absolute path to specified dir (can specifiy any SUB-directory);
+	>cd..			**moves UP to preceding directory;
+	>cd\			**goes straight to root directory;
+
+-Navigate directly into ANY KNOWN directory in the system, use 'pushd':
+	>pushd \insert_dir\path\here
+
+-Navigate directly back to dir where 'pushd' was initiated, use 'popd':
+	>popd
+
+-List contents of a directory:
+	>dir		**lists non-hidden contents of the current wd;
+	>dir /a		**lists non-hidden & hidden contents of current wd;
+	>dir drive:\Absolute\Path	**lists contents of the specified directory;
+	>dir relative\Path		**lists contents of the specified directory;
+
+-Open an application or file:
+	>\Path\to\Your_file.exe		**NOTE: use " " for file paths containing spaces.
+
+-Open a file using a specific application:
+	>\Path\To_the\Application.exe \Path\To\Your_file.<extension>
+
+-Rename a file:
+	>rename \file\Path.ext	file_new_name	**NOTE: can also use the alias 'ren' instead of 'rename.'
+
+-Rename a directory:
+	>move dir_old_name dir_new_name
+
+-Delete a file:
+	>del file_name.extension
+
+-Delete a directory:
+	>rmdir directory_name		**deletes directory IF it is empty.
+	>rmdir directory_name /s	** '/s' deletes directory EVEN IF it is NOT empty.
+
+-To move multiple directories OR files (...replace 'move' with other commands as well...):
+	>FOR %variable IN (set) DO command [command-parameters]	**FOR-IN-DO structure;
+	
+	>FOR %a IN (dir1 dir2 ... ) DO move %a new_location	**Generic form for FOR-IN-DO command; use for files or directories;
+	>FOR /d %a IN (dir*) DO move %a trgt_path_or_new_loc	**Directory specific form of FOR-IN-DO (/d specifies directories only).
+		**NOTE: %variable specifies a single letter replaceable parameter (case-sensitive; %a ne %A).
+			'command-parameters' specifies parameters or switches for specific commands (ex/ " %a new_location ").
+			(set) is the set of one or more file...wildcard (*) can be used here.
+
+	[Alternative for COPYING multiple files]
+	>copy scr\dir\file* dest\dir
+
+
+-To find a character string within a file:
+	>findstr "enter char string here" Path\To\Your_file.ext		**Searches for the strings "enter", "char", "string", and "here" in the specified file. 
+	>findstr /c:"enter char string here" Path\To\Your_file.ext	**Searches for the string "enter char string here" in the specified file. (No space after '/C:')
+
+-Show list of current, active tasks:
+	>tasklist
+	>tasklist /v /fi "PID gt #PID" /fo table	**My preferred tasklist view; '/fi' lets you identify specific criteria; '/fo table' list output in table format.
+	-OR-
+	>taskmgr					**Launches Task Manager window
+
+
+-Run (Start) an application:
+	>application_name.exe
+	>start application_name.exe
+	>start chrome.exe --restore-last-session
+
+-Stop an application (close a file):
+	>taskkill /im application_name.exe			** 'IM' means 'IMAGENAME';
+	>taskkill /im app1.exe /im app2.exe /im app3.exe
+	>taskkill /PID x## /PID Y## /PID Z##			** 'PID' means Process ID;
+	>taskkill /FI "windowtitle eq abc*" /t			** 'FI' means Filter;		** /t applies the cmd to all child processes started by the trgt app;
+
+
+-Execute multiple commands from a SINGLE cmd line entry:
+	>command1 & command2 & ...	**Executes Command2 after Command1 finishes executing;
+	>command1 && command2 && ...	**Executes Command2 only if Command1 executes successfully;
+	>command1 | command2 | ...	**Executes Command2 if Command1 is unsuccessful;
+	>command1 || command2 || ...	**Executes Command2 only if Command1 is unsuccessful.
+[NOTE: Always use SPACE to separate commands from switch]
+
+
+-Activate Browser-Sync (an application that watches for changes in specified files & reloads the browser to show changes)
+	>browser-sync start --server --directory --files "*"
+	ASIDE:
+		--server	**activates browser-sync in "server" mode, meaning it Browser-sync will Serve our website from specified directory; it that it provides a local http:\\
+		--directory	**provides a directory list of the CURRENT wd being used.
+		--files "*"	**specifies which file(s) browser-sync should watch...  "*" indicates all files in wd;
+    replace "*" with "*/*" to make this cmd RECURSIVE and have browser-sync watch all files AND sub-directories in wd.
+
+...use CTL+C to stop browser-sync.
+
+-To "undo" taskkill /f /im explorer.exe (meaning you excuted this command and ended up losing the taskbar & desktop as a result):
+	>start explorer
+
+-To shutdown computer:
+	>shutdown /s		**shuts down local computer.
+	>shutdown /r		**restarts local computer.
+	>shutdown /l		**logs you out of session on local computer.
+
+
+NPM (Node Package Manager):
+Serve a project (meaning, act as a server for a specified project or directory):
+	>npm run docs-serve	**execute cmd from project directory;
+

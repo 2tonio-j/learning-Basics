@@ -1,0 +1,56 @@
+IntelliJ for Java:
+
+Use shortcuts to comment and uncomment lines and blocks of code:
+Ctrl+/: for single line comments (//... )
+Ctrl+Shift+/: for block comments (/*...*/ )
+
+All Java programs contain at least one function (named 'main'); each function consists of:
+	-a ReturnType (ex/ void {which does not return anything} );
+	-the func Name (should clearly identify the purpose of the func);
+	-next, within parenthesis, come the func Parameters;
+	-then come the braces {} which contain the Java code.
+
+	so an sample function would look as follows:
+	
+	****************************
+		void sendEmail () {
+		   ...
+		}
+	****************************
+
+In Java, functions exist within CLASSES (with 'Main' class specified for the 'main' function);
+
+	NOTE: In Java, functions within classes are referred to as "methods."
+	....so, class Main contains the 'main' method.
+
+	ALSO NOTE: 	classes use Pascal Naming Convention (ex/ MainEventYesterday)
+			methods use Camel Naming Convention (ex/ wildCardsToday)
+
+	*** It is prudent to treat Java syntax as case-sensitive. ***
+
+Java requires that Classes and methods include 'AccessModifiers' which are keywords (ex/ 'public', 'private', and others) that determine 
+if other Classes & methods can access the target Class & method 
+
+Last, the 'static' keyword is used to describe how objects are managed in memory. It means the 'static' object belongs specifically to a
+Class instead of being reused for other instances of that Class.
+
+	*** Always make the 'main' method a 'static' object. ***
+	
+	so a sample class & method combination would look as follows:
+
+	****************************
+		public class Main {
+		   public static void main() {
+		   // this is how you comment in Java
+		   // remember to end Java program statements with a semi-colon (;)
+		      ...
+		   }
+		}
+	****************************
+
+To run Java compiler via command terminal:
+	-Right-click the .java program tab;
+	-select 'Open in Terminal';
+	-Run Java compiler (javac.exe) using
+		>start c:"\Program Files\Java\jdk-14.0.1\bin\javac.exe" main.java
+		>start c:"path\to\javac.exe" thisIsjavaprgm.java
