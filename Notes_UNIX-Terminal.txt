@@ -189,29 +189,37 @@ Install Browser-sync:
 **********************************************
 GitHub
 
-Renaming a LOCAL BRANCH to repo Remote branch master (using Terminal)
-	1. On local client, open Terminal
-	2. Change current working dir to local project (aka local dir);
-	3. Initialize local dir as a Git repo (this makes it a LOCAL branch):
-		% git init
+Adding files from local client to EXISTING remote repos:
 
-	4. COPY remote repo URL:
-		At top of the Remote Repo's "Quick Setup" page, click the copy symbol (a clipboard icon) to copy;
+
+	1. 'cd' into target directory via Terminal on local client.
+	2. (re-)Initialize existing local Git repo:
+		% git init
+	
+	3. Check for changes in tracked files & directories:
+		% git status					** may need to 'cd' in subdirectories;
+
+	4. 'add' files and/or directories that have changed:
+		% git add					** this is for files/dirs that have NOT been staged or committed;
+
+	5. 'Commit' the files that are staged in local branch:
+		% git commit -m "A message must go here"	** '-m' is a flag that forces a message to be included with the commit;
+								** 'commit' will commit the tracked changes to local repo & prepare them to be pushed to a Remote repo;
+
+	6. COPY remote repo URL:
+		On the Remote Repo's "<Code>" tab, click the CLONE button to copy;
 		** the correct URL ends in '.git';
 
-	5. Set & verify the Remote repo URL:
-		% git remote add #NameOfRemoteRepo #URL.for.repo	** Sets the remote repo URL as #NameOfRemoteRepo;
-		% git remote -v						** Verifies the name of the target (remote) repo & its URL;
-	
-	6. Rename the target (remote) repo:
-		% git remote rename currentName newName
+	7. Set push destination:				
+		% git remote add origin <remote repo URL>	** Verifies the name of the target (remote) repo & its URL;
+		% git remote -v					** Sets the remote repo URL as #NameOfRemoteRepo;
 
-	7. Confirm new name of target (remote) repo:
-		% git remote -v
-
-
+ 	8. PUSH & SET remote branch (aka 'origin') as UPSTREAM branch for current branch master (master):
+		% git push -u origin master			** '-u' is equivalent to '--set-upstream' **
+ 
 
 Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub Repository)
+
 	1. Create remote repo on GitHub;
 	2. On local client, open Terminal
 	3. Change current working dir to local project (aka local dir);
@@ -230,7 +238,7 @@ Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub
 								** 'commit' will commit the tracked changes to local repo & prepare them to be pushed to a Remote repo;
 
 	7. COPY remote repo URL:
-		At top of the Remote Repo's "Quick Setup" page, click the copy symbol (a clipboard icon) to copy;
+		On the Remote Repo's "<Code>" tab, click the CLONE button to copy;
 		** the correct URL ends in '.git';
 
 	8. Set & verify the Remote repo URL:
