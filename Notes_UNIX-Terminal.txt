@@ -1,0 +1,242 @@
+
+
+Shutdown computer:
+	(Local)
+	% shutdown -h now			** halts processes and shuts down local computer immediately; no warning msgs;
+	% shutdown -h +MM			** shuts down local computer after +MM minutes;
+	% shutdown -h YYMMDDHH:MM		** specifies a DTG for local computer shutdown; warning msgs provided;
+	% shutdown -r now			** reboot local computer after immediate shutdown;
+
+
+Open terminal:
+	CMD + Space Bar; begin typing 'Terminal';
+
+Close terminal:
+	CMD + Q
+	
+Check system memory:
+	% df -h
+
+
+List directory contents:
+	% ls
+		-G	colors directories;
+		-S	sorts by size;
+		-p	places / at end of each subdirectory;
+		-t	sorts by last modified;
+
+
+Find files:
+	% find (starting dir) (matching criteria and actions)		** This is the general form;
+	% find . -name 'pattern' -print					** pseudo example: '.' is current directory;
+											   	Replace 'pattern' with filename or expression (keep the ' ');
+											   	Keep the -name and -print switches;
+
+	% find ~/ -name '*Terminal.rtf' -print				** Ex/ how to find this document in the; 
+												'~/' specifies the Home directory;
+												     ( NOTE: '/' specifies the Root directory );
+												'*' specifies all files containing the pattern 'Terminal.rtf'
+
+
+Check (Test) if a file exists:
+	% [[ -f ./MyFiles/ZX600P7F.pdf ]] && echo "Found the file you wanted"
+
+		[[ <expression> ]] is syntax for 'test <an expression>'
+		'.' specifies current directory;
+		'-f' checks if target exists (must be a regular file);
+		'-e' also checks if target exists (can be a directory OR file);
+		'&& echo' returns (outputs) whatever comes next;
+
+
+Display list of all running processes:
+	% ps auxc					** Returns active PIDs by User and Command;
+	% ps axc | grep -i <app name>			** Returns the PID(s) and Command(s) associated w/ target app (-i means ignore character casing);
+
+	% ps axe | egrep -i 'pattern1|pattern2'		** use 'egrep' to search for multiple words (patterns);
+
+	OR
+
+	% top -o pid					** lists active processes by PID in decreasing order
+
+
+Find Process ID for running processes:
+	% pgrep
+		-n select only the newest (most recently-started) processes that match criteria
+		-o select only the oldest (least recently-started) processes that match criteria
+		-x require an exact match of the process name
+
+
+Open an Application:
+	% open '/Path/To My/File.ext'
+
+
+Open Chrome & Restore last session:\
+	% open /Applications/Google Chrome.app --args --restore-last-session
+
+
+Close Chrome "correctly" (to enable last-session restore):
+	%pkill -a -i 'Google Chrome'
+
+
+Stop a process (or application):
+	% kill -9 <PID>
+	
+	OR
+	
+	% pkill -SIG <process name>		** 'SIG' is placeholder for SIGNAL; use 9 to kill a process;
+	% pkill -9 'Microsoft Word'
+
+
+Move file(s) into a directory:
+	% mv file1.ext directory
+	% mv old_name.ext new_name.ext
+	% mv old_name.ext directory/new_name.ext
+
+
+Move directories:
+	% mv dir1 /New/Path/To/dir1
+
+
+**********************************************
+FOR-Loops in BASH:
+	% for <name> [[ in [ word \'85 ] ] ; ] do cmd ; done
+	
+	Ex/ % for i in 'seq 1 10'; do echo $i; done
+
+
+
+Find all Applications (.app) on the computer:
+	% sudo find / -iname *.app > ~/Desktop/EveryMacDotApp.txt
+							
+						** ' > ~/Desktop..' directs the output from the search to a target location, which is a .txt file in this case;
+
+
+**********************************************
+Activate Auto-complete for UNIX (Mac):
+	1. Enter command:
+		% sudo nano ~/.inputrc
+
+	2. Next, enter p/w when prompted.
+	3. Taken to Nano editor to write; .inputrc is a configuration file containing customizable terminal variables.
+	4. In Nano, enter following cmds:
+		set completion-ignore-case on
+		set show-all-if-ambiguous on
+		TAB: menu-complete
+	5. Press CTRL + o to save;
+	6. Press Return;
+	7. Press CTRL + x to exit;
+	8. Exit current terminal session (CMD + Q) & restart Terminal.
+
+	** Must use PROPER LETTER CASING for auto-complete to work **
+
+
+**********************************************
+For NVM (Node Version Manager):
+
+	1. To install or update nvm, use the following cURL:
+		%curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+	2. Remove modules from the system Node as follows:
+		% nvm use system
+		% npm uninstall -g a_module
+
+	3. Load NVM
+		i. Close and reopen your terminal to start using nvm;
+		ii. Run the following code:
+			% export NVM_DIR="$HOME/.nvm"
+			% [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm;
+		
+	4. Verify NVM was properly installed
+		% nvm --version
+
+
+**********************************************
+Install Node.js (& npm) via NVM:
+	1. Install the latest Node.js LTS (Long-Term Support) version:
+		% nvm install --lts
+
+	2. To use Node.js LTS:
+		% nvm use --lts
+
+**********************************************
+Install Browser-sync:
+	% npm i -g browser-sync		** equivalent to:  % npm install -g browser-synce **
+
+
+	Verify installation/Check version:
+	% browser-sync --version
+
+
+
+GitHub
+
+Renaming a LOCAL CONNECTION to Remote repo (using Terminal)
+	1. On local client, open Terminal
+	2. Change current working dir to local project (aka local dir);
+	3. Initialize local dir as a Git repo (this makes it a LOCAL REPO):
+		% git init
+
+	4. COPY remote repo URL:
+		At top of the Remote Repo's "Quick Setup" page, click the copy symbol (a clipboard icon) to copy;
+		** the correct URL ends in '.git';
+
+	5. Set & verify the Remote repo URL:
+		% git remote add #NameOfRemoteRepo #URL.for.repo	** Sets the remote repo URL as #NameOfRemoteRepo;
+		% git remote -v						** Verifies the name of the target (remote) repo & its URL;
+	
+	6. Rename the target (remote) repo:
+		% git remote rename currentName newName
+
+	7. Confirm new name of target (remote) repo:
+		% git remote -v
+
+
+
+Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub Repository)
+	1. Create remote repo on GitHub;
+	2. On local client, open Terminal
+	3. Change current working dir to local project (aka local dir);
+	4. Initialize local dir as a Git repo (this makes it a LOCAL REPO):
+		% git init
+
+	5. 'Add' the files in the new Local repo:
+		% git add .					** '.' just specifies the current dir; could specify path to any dir or files you want;
+								** 'add' marks the files as local repo files, and stages them for committing;
+
+	6. 'Commit' the files that are staged in local repo:
+		% git commit -m "A message must go here"	** '-m' is a flag that forces a message to be included with the commit;
+								** 'commit' will commit the tracked changes to local repo & prepare them to be pushed to a Remote repo;
+
+	7. COPY remote repo URL:
+		At top of the Remote Repo's "Quick Setup" page, click the copy symbol (a clipboard icon) to copy;
+		** the correct URL ends in '.git';
+
+	8. Set & verify the Remote repo URL:
+		% git remote add origin remote.repo.URL		** Sets the remote repo URL as the ORIGIN;
+		% git remote -v					** Verifies the remote repo URL;
+
+	   8(a) To set an EXISTING REPO:
+		% git remote add #NameOfRemoteRepo #URL.for.repo	** Sets the remote repo URL as #NameOfRemoteRepo;
+		% git remote -v						** Verifies the name of the target (remote) repo & its URL;
+
+
+	9. 'Push' the changes in local repo TO remote repo (GitHub):
+		% git push origin master			** Pushes the changes in local repo TO the remote repo specified as the Origin
+
+
+Disconnect local repo branch from Remote master:
+	% git remote rm origin					** 'rm' can be replaced w/ 'remove'; and 'origin' can be replaced by local branch name;
+	% rm -rf path/to/local_repo/.git
+
+
+
+Other useful Git commands:
+	% git status
+	% git branch 
+	% git branch -r
+	% git push -u origin master
+	% git rm --cached <file>...			** to un-stage a file (ie. undo a 'git add' command;
+		% git rm -f --cached <file>...		** uses '-f' to force Git to un-stage the file;
+
+
+
