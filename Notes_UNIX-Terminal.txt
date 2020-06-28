@@ -37,6 +37,18 @@ Find files:
 												     ( NOTE: '/' specifies the Root directory );
 												'*' specifies all files containing the pattern 'Terminal.rtf'
 
+Search for multiple words in single line:
+	% grep 'word1\|word2\|word3' /path/to/file			** remember, '\' in UNIX/LINUX means IGNORE the NEXT character;			
+	% grep 'word*' *.txt						** Search all text files;
+	% grep 'wordA*'\''wordB' *.py					** Search all python files for 'wordA' or 'wordB'
+	
+	% grep -E 'word1|word2' *.doc
+	% grep -e string1 -e string2 *.pl
+	% egrep "word1|word2" *.c
+
+	% grep -v 'bar\|foo' /dir1/dir2/file1				** Show all the lines that do not match given pattern/words/strings
+	% egrep -v 'pattern1|pattern2' /path/to/file
+
 
 Check (Test) if a file exists:
 	% [[ -f ./MyFiles/ZX600P7F.pdf ]] && echo "Found the file you wanted"
@@ -95,6 +107,13 @@ Move file(s) into a directory:
 
 Move directories:
 	% mv dir1 /New/Path/To/dir1
+
+
+
+
+**********************************************
+Exit Git's Per-user configuration file
+	% shift+z, shift+z  (capital Z twice)
 
 
 **********************************************
@@ -167,13 +186,13 @@ Install Browser-sync:
 	% browser-sync --version
 
 
-
+**********************************************
 GitHub
 
-Renaming a LOCAL CONNECTION to Remote repo (using Terminal)
+Renaming a LOCAL BRANCH to repo Remote branch master (using Terminal)
 	1. On local client, open Terminal
 	2. Change current working dir to local project (aka local dir);
-	3. Initialize local dir as a Git repo (this makes it a LOCAL REPO):
+	3. Initialize local dir as a Git repo (this makes it a LOCAL branch):
 		% git init
 
 	4. COPY remote repo URL:
@@ -199,7 +218,10 @@ Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub
 	4. Initialize local dir as a Git repo (this makes it a LOCAL REPO):
 		% git init
 
-	5. 'Add' the files in the new Local repo:
+	5. Clone the remote repo
+		% git clone <remote repo URL>			** this becomes new Local repo branch;
+
+	5. CD into local repo & 'Add' the files in the current wd:
 		% git add .					** '.' just specifies the current dir; could specify path to any dir or files you want;
 								** 'add' marks the files as local repo files, and stages them for committing;
 
@@ -212,16 +234,16 @@ Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub
 		** the correct URL ends in '.git';
 
 	8. Set & verify the Remote repo URL:
-		% git remote add origin remote.repo.URL		** Sets the remote repo URL as the ORIGIN;
+		% git remote add origin <remote repo URL>	** Sets the remote repo URL as the ORIGIN;
 		% git remote -v					** Verifies the remote repo URL;
 
 	   8(a) To set an EXISTING REPO:
-		% git remote add #NameOfRemoteRepo #URL.for.repo	** Sets the remote repo URL as #NameOfRemoteRepo;
+		% git remote add #NameOfRemoteRepo <remote repo URL>	** Sets the remote repo URL as #NameOfRemoteRepo;
 		% git remote -v						** Verifies the name of the target (remote) repo & its URL;
 
 
-	9. 'Push' the changes in local repo TO remote repo (GitHub):
-		% git push origin master			** Pushes the changes in local repo TO the remote repo specified as the Origin
+	9. 'Push' the changes in local branch TO remote branch (GitHub):
+		% git push origin master			** Pushes the changes in local branch TO the remote branch specified as the Origin
 
 
 Disconnect local repo branch from Remote master:
