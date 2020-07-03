@@ -95,10 +95,11 @@ Stop a process (or application):
 	
 	OR
 	
-	% pkill -SIG <process name>		** 'SIG' is placeholder for SIGNAL; use 9 to kill a process;
+	% pkill -SIG <process name>			** 'SIG' is placeholder for SIGNAL; use 9 to kill a process;
 	% pkill -9 'Microsoft Word'
-	% pkill -9 -i microsoft\ word		** '\' IGNORES the next character (a space in this case);
-						** '-i' IGNORES letter case for specified pattern (word pattern; ex/ Microsoft Word);
+	% pkill -9 -i microsoft\ word			** '\' IGNORES the next character (a space in this case);
+	% pkill -9 -i 'process\ 1|process2|etc..'	** '-i' IGNORES letter case for specified pattern (word pattern; ex/ Microsoft Word);
+							** pipe (|) lets us list multiple process names; NO SPACE before OR after pipe (sys will think its an arg);
 
 
 Move file(s) into a directory:
