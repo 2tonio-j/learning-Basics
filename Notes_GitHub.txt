@@ -29,7 +29,7 @@ Committing changes to a Remote Repo from a Local Repo is a 3-step process:
 		>git config user.name "any name you want"
 
   3. PUSH TO REMOTE REPO (publish our changes to GitHub)
-	>git push <name for remote repo <remote repo branch>	**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
+	>git push <name for remote repo> <remote repo branch>	**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
 	>git push origin master
 
 
