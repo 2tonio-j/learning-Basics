@@ -1,3 +1,11 @@
+
+Helpful Resources:
+	Stackoverflow.com
+	jsfiddle.net
+	codepen.io
+	css-tricks.com
+
+
 General Questions & POIs:
 
 Should I (and how to) install npm (node package manager...ex/ 'node.js') locally? 

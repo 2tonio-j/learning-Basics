@@ -112,6 +112,8 @@ Move directories:
 	% mv dir1 /New/Path/To/dir1
 
 
+Copy directories:
+	% cp -R <source_folder> <destination_folder>
 
 
 **********************************************
@@ -187,4 +189,34 @@ Install Browser-sync:
 
 	Verify installation/Check version:
 	% browser-sync --version
+
+
+**********************************************
+Setting up Jekyll as Static Site Generator (SSG):
+
+After installing Node.js,...
+Navigate to the root /bootstrap directory and run npm install to install our local dependencies;
+	% cd .../node_modules/bootstrap
+	% npm install 
+
+install Jekyll (a static site generator) with 'gem install jekyll bundler';
+	% sudo gem install jekyll bundler
+
+Navigate to desired working directory (where webpage doc is stored);
+	% cd <path/to/target/directory>
+
+generate a Gemfile with bundle init;
+	% bundle init
+
+add project’s dependencies using bundle add command < !! only do this step once (for initial setup) or you'll get a version error !! >
+	% sudo bundle add jekyll
+
+**********************************************
+Running Static Site Generator using Jekyll:
+
+serve your project to localhost:4000
+	% bundle exec jekyll serve		** jekyll commands begin with 'bundle exec';
+						** exit site serve mode using CTRL+C;
+
+
 
