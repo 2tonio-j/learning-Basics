@@ -11,7 +11,7 @@ To determine which repo BRANCH you are currently using:
 To create a new directory within the Local Repo:
 	>mkdir new_directory_name	**NOTE: must be in the Local Repo (current wd) -OR- specify path to the Local Repo.
 
-Committing changes to a Remote Repo froma Local Repo is a 3-step process:
+Committing changes to a Remote Repo from a Local Repo is a 3-step process:
   1. MARK FOR COMMITTING (files or directory)
 	>git add .	**NOTE: using '.' marks everything in the working directory (wd) that has not been committed.
 	or
@@ -29,27 +29,29 @@ Committing changes to a Remote Repo froma Local Repo is a 3-step process:
 		>git config user.name "any name you want"
 
   3. PUSH TO REMOTE REPO (publish our changes to GitHub)
-	>git push	**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
+	>git push					**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
 
-To bring changes from Remote Repo to Local Repo:
-	>git pull.......
+	From Git Bash...
+	% git push origin master			** Pushes the changes in local branch (called master) TO the remote branch (called origin);
+
+
 
 Adding existing project (directory) to GitHub using command line.
   1. Create new Remote Repo on GitHub;
   2. Launch Git Bash (from directory containing git-bash.exe)
 	@ c:\Program Files\Git
-	>git-bash.exe			** Git Bash is runs in LINUX **
+	>git-bash.exe			** Git Bash runs in LINUX **
 	
   3. (In git bash) navigate to project directory (this will become the Local Repo).
-  4. 
+  4. ..............
 
 
-Sync changes made in remote repo branch TO local repo branch:
+To bring changes (Sync changes) made in remote repo branch TO local repo branch:
 	1. On local client, navigate to dir where local branch will be stored.
 		% cd Path/to/local\ branch						** '\' means IGNORE the next character;
 
 	2. Initialize git connection (on windows: open Git Bash & then initialize).
-		% git init
+		% git init								** Do this is ONLY IF current directory is NOT ALREADY a git repository;
 
 	3. Connect to remote repo.
 		% git remote add <name for remote repo> <remote repo URL>
@@ -59,3 +61,82 @@ Sync changes made in remote repo branch TO local repo branch:
 		% git pull origin master						** example 'git pull' where 'origin' is <name for remote repo>
 											   and 'master' is the remote branch being pulled into local branch;
 
+To remove .git folder AND disconnect local repo from remote repo:
+  	1. Launch Git Bash (from directory containing git-bash.exe).
+	@ "c:\Program Files\Git\git-bash.exe"						** Git Bash runs in LINUX **
+
+	2. Remove the .git directory.
+		% rm -rf path/to/local_repo/.git					** -r (recursive: actiion will apply to directory & its contents);
+											   -f (force: ignores nonexistant files & arguments & DOES NOT PROMPT prior to action);
+
+
+Renaming a LOCAL BRANCH to repo Remote branch master (using Terminal)
+	1. On local client, open Terminal
+	2. Change current working dir to local project (aka local dir);
+	3. Initialize local dir as a Git repo (this makes it a LOCAL branch):
+		% git init
+
+	4. COPY remote repo URL:
+		At top of the Remote Repo's "Quick Setup" page, click the copy symbol (a clipboard icon) to copy;
+		** the correct URL ends in '.git';
+
+	5. Set & verify the Remote repo URL:
+		% git remote add #NameOfRemoteRepo #URL.for.repo	** Sets the remote repo URL as #NameOfRemoteRepo;
+		% git remote -v						** Verifies the name of the target (remote) repo & its URL;
+	
+	6. Rename the target (remote) repo:
+		% git remote rename currentName newName
+
+	7. Confirm new name of target (remote) repo:
+		% git remote -v
+
+
+
+Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub Repository)
+	1. Create remote repo on GitHub;
+	2. On local client, open Terminal
+	3. Change current working dir to local project (aka local dir);
+	4. Initialize local dir as a Git repo (this makes it a LOCAL REPO):
+		% git init
+
+	5. Clone the remote repo
+		% git clone <remote repo URL>			** this becomes new Local repo branch;
+
+	5. CD into local repo & 'Add' the files in the current wd:
+		% git add .					** '.' just specifies the current dir; could specify path to any dir or files you want;
+								** 'add' marks the files as local repo files, and stages them for committing;
+
+	6. 'Commit' the files that are staged in local repo:
+		% git commit -m "A message must go here"	** '-m' is a flag that forces a message to be included with the commit;
+								** 'commit' will commit the tracked changes to local repo & prepare them to be pushed to a Remote repo;
+
+	7. COPY remote repo URL:
+		At top of the Remote Repo's "Quick Setup" page, click the copy symbol (a clipboard icon) to copy;
+		** the correct URL ends in '.git';
+
+	8. Set & verify the Remote repo URL:
+		% git remote add origin <remote repo URL>	** Sets the remote repo URL as the ORIGIN;
+		% git remote -v					** Verifies the remote repo URL;
+
+	   8(a) To set an EXISTING REPO:
+		% git remote add #NameOfRemoteRepo <remote repo URL>	** Sets the remote repo URL as #NameOfRemoteRepo;
+		% git remote -v						** Verifies the name of the target (remote) repo & its URL;
+
+
+	9. 'Push' the changes in local branch TO remote branch (GitHub):
+		% git push origin master			** Pushes the changes in local branch (speficied as Master) TO the remote branch (specified as the Origin);
+
+
+Disconnect local repo branch from Remote master:
+	% git remote rm origin					** 'rm' can be replaced w/ 'remove'; and 'origin' can be replaced by local branch name;
+	% rm -rf path/to/local_repo/.git
+
+
+
+Other useful Git commands:
+	% git status
+	% git branch 
+	% git branch -r
+	% git push -u origin master
+	% git rm --cached <file>...			** to un-stage a file (ie. undo a 'git add' command;
+		% git rm -f --cached <file>...		** uses '-f' to force Git to un-stage the file;
