@@ -1,8 +1,20 @@
 IntelliJ for Java:
 
+To run Java compiler via command terminal:
+	-Right-click the .java program tab;
+	-select 'Open in Terminal';
+	-Run Java compiler (javac.exe) using
+		>start c:"\Program Files\Java\jdk-14.0.1\bin\javac.exe" main.java
+		>start c:"path\to\javac.exe" thisIsjavaprgm.java
+
+
+Parameters: the value containers we define (in 'methods' for Java);
+Arguments: the actual values passed to the methods (method = function in Java).
+
+
 Use shortcuts to comment and uncomment lines and blocks of code:
-Ctrl+/: for single line comments (//... )
-Ctrl+Shift+/: for block comments (/*...*/ )
+Ctrl + /: for single line comments (//... )
+Ctrl + Shift + /: for block comments (/*...*/ )
 
 All Java programs contain at least one function (named 'main'); each function consists of:
 	-a ReturnType (ex/ void {which does not return anything} );
@@ -10,7 +22,7 @@ All Java programs contain at least one function (named 'main'); each function co
 	-next, within parenthesis, come the func Parameters;
 	-then come the braces {} which contain the Java code.
 
-	so an sample function would look as follows:
+	so a sample function would look as follows:
 	
 	****************************
 		void sendEmail () {
@@ -40,7 +52,7 @@ Class instead of being reused for other instances of that Class.
 
 	****************************
 		public class Main {
-		   public static void main() {
+		   public static void main(String[] args) {
 		   // this is how you comment in Java
 		   // remember to end Java program statements with a semi-colon (;)
 		      ...
@@ -48,9 +60,61 @@ Class instead of being reused for other instances of that Class.
 		}
 	****************************
 
-To run Java compiler via command terminal:
-	-Right-click the .java program tab;
-	-select 'Open in Terminal';
-	-Run Java compiler (javac.exe) using
-		>start c:"\Program Files\Java\jdk-14.0.1\bin\javac.exe" main.java
-		>start c:"path\to\javac.exe" thisIsjavaprgm.java
+Packages:
+	In Java, 'packages' contain and group related classes the same way 'classes' contain and organize methods.
+	Naming convention for packages is the 'domain name' in reverse;  	*** you DO NOT have to have a registered domain name IOT create a package name; can be generic. ***
+
+
+To invoke the Java Virtual Machine (JVM):
+	1. At the tab for project name (name.java) near the top of the code editor, right-click the tab & select 'Open in Terminal'.
+	2. Change directory (cd) into the 'src' directory for your project.
+	3. Enter the following:
+		>java <full.path.to.Main.class>
+		ex/
+		>java com.domainisnull.Main
+
+	This will execute your java program by loading the byte-code and convert it into the NATIVE code language for whatever OS is running your machine.
+	*** Java code editors like IntelliJ and Eclipse perform this conversion in the background, so we never actually see it. ***
+
+
+Storing values in Java:
+	There are two (2) data types for storing values:
+		1) Primitive type (for simple values);
+			byte	(1 byte)	whole numbers b/t [-128,127]
+			short	(2 bytes)	whole numbers [-32k, 32k]
+			int	(4 bytes)	whole numbers [-2B, 2B]
+			long	(8 bytes)	whole numbers beyond 'int'
+			float	(4 bytes)	decimal values
+			double	(8 bytes)	decimal values
+			char	(2 bytes)	letter values (including int'l letters)
+			boolean	(1 byte)	T or F values
+		
+		*** There are ONLY 8 PRIMITIVE data types; their VALUES get copied or manipulated; primitive types DO NOT HAVE MEMBERS. 
+		    All other data types are REFERENCE types (their REFERENCES get copied or manipulated; and they will have members). ***
+
+		2) Reference type (aka 'non-primitive,' used for complex objects [i.e. date objects or mail messages]);
+			> These data types actually 'reference' separate CLASSES (which is why they are called REFERENCE TYPES).
+			> If the referenced class is from a different package than our program's top-level pkg & subpackage (which is usually the case),
+			  then we must IMPORT the pkg associated with the referenced class into our program.
+			> Additionally, we must 
+				(1) allocate memory (using 'new' operator), and 
+				(2) create an new instance of the class  [we do this by declaring and initializing the reference type variable].
+
+
+	****************************
+	package com.domainisnull;
+	
+	import java.util.Date;
+
+		public class Main {
+		   public static void main(String[] args) {
+		      byte age = 30;
+		      Date now = new Date(); 
+		      ...
+		   }
+		}
+	****************************
+
+
+
+
