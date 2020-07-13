@@ -29,19 +29,16 @@ Committing changes to a Remote Repo from a Local Repo is a 3-step process:
 		>git config user.name "any name you want"
 
   3. PUSH TO REMOTE REPO (publish our changes to GitHub)
-<<<<<<< HEAD
 	>git push					**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
 
 	From Git Bash...
 	% git push origin master			** Pushes the changes in local branch (called master) TO the remote branch (called origin);
-=======
+
 	>git push <name for remote repo> <remote repo branch>	**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
 	>git push origin master
->>>>>>> 0c8c39ac300d49ccfacc89bd70c1e8964d531d26
 
 
 
-<<<<<<< HEAD
 Adding existing project (directory) to GitHub using command line.
   1. Create new Remote Repo on GitHub;
   2. Launch Git Bash (from directory containing git-bash.exe)
@@ -51,8 +48,7 @@ Adding existing project (directory) to GitHub using command line.
   3. (In git bash) navigate to project directory (this will become the Local Repo).
   4. ..............
 
-=======
->>>>>>> 0c8c39ac300d49ccfacc89bd70c1e8964d531d26
+
 
 To bring changes (Sync changes) made in remote repo branch TO local repo branch:
 	1. On local client, navigate to dir where local branch will be stored.
@@ -64,12 +60,20 @@ To bring changes (Sync changes) made in remote repo branch TO local repo branch:
 	3. Connect to remote repo.
 		% git remote add <name for remote repo> <remote repo URL>
 
-	4. Pull from remote repo branch & merge into local branch.
+	4a. (Recommended) Pull from remote repo branch & merge into local branch.
+		% git pull --ff-only							** Use this to AVOID creating a new commit & 
+											   REBASING your local branch
+
+											** can set this as default action for git pull using:
+											   % git config --global pull.ff only
+
+
+	4b. (Not Recommended) Pull from remote repo branch & merge into local branch.
 		% git pull <name for remote repo> <remote repo branch>
 		% git pull origin master						** example 'git pull' where 'origin' is <name for remote repo>
 											   and 'master' is the remote branch being pulled into local branch;
 
-<<<<<<< HEAD
+
 To remove .git folder AND disconnect local repo from remote repo:
   	1. Launch Git Bash (from directory containing git-bash.exe).
 	@ "c:\Program Files\Git\git-bash.exe"						** Git Bash runs in LINUX **
@@ -104,36 +108,38 @@ Renaming a LOCAL BRANCH to repo Remote branch master (using Terminal)
 Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub Repository)
 	1. Create remote repo on GitHub;
 	2. On local client, open Terminal
-=======
+
+
 
 Adding files from local (repo) branch to EXISTING remote (repo) branch:
-
-
 	1. 'cd' into target directory via Terminal on local client.
-	2. (re-)Initialize existing local Git repo:
+	2. (re)Initialize existing local Git repo:
 		% git init
 	
-	3. Check for changes in tracked files & directories:
-		% git status					** may need to 'cd' in subdirectories;
-
-	4. 'add' files and/or directories that have changed:
-		% git add					** this is for files/dirs that have NOT been staged or committed;
-
-	5. 'Commit' the files that are staged in local branch:
-		% git commit -m "A message must go here"	** '-m' is a flag that forces a message to be included with the commit;
-								** 'commit' will commit the tracked changes to local repo & prepare them to be pushed to a Remote repo;
-
-	6. COPY remote repo URL:
+	3. COPY remote repo URL:
 		On the Remote Repo's "<Code>" tab, click the CLONE button to copy;
 		** the correct URL ends in '.git';
 
-	7. Set push destination:				
-		% git remote add origin <remote repo URL>	** Verifies the name of the target (remote) repo & its URL;
-		% git remote -v					** Sets the remote repo URL as #NameOfRemoteRepo;
+	4. Set push destination:				
+		% git remote add origin <remote repo URL>	** Sets the remote repo URL as #NameOfRemoteRepo;
+		% git remote -v					** Verifies the name of the remote repo (we named it 'origin') & its URL;
+
+	5. Check for changes in tracked files & directories:
+		% git status					** may need to 'cd' in subdirectories;
+
+	6. 'add' files and/or directories that have changed:
+		% git add .					** this is for files/dirs that have NOT been staged or committed;
+								** '.' says to add items in working directory;
+
+	7. 'Commit' the files that are staged in local branch:
+		% git commit -m "A message must go here."	** '-m' is a flag that forces a message to be included with the commit;
+								** 'commit' will commit the tracked changes to local repo & prepare them to be pushed to a Remote repo;
+
 
  	8. PUSH & SET remote branch (aka 'origin') as UPSTREAM branch for current branch master (master):
 		% git push -u origin master			** '-u' is equivalent to '--set-upstream' **
  
+
 
 Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub Repository)
 
@@ -143,7 +149,6 @@ Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub
   		2(a) FOR WINDOWS:  Launch Git Bash (from directory containing git-bash.exe)
 			>start c:\Program Files\Git\git-bash.exe				** Git Bash runs in LINUX **		
 
->>>>>>> 0c8c39ac300d49ccfacc89bd70c1e8964d531d26
 	3. Change current working dir to local project (aka local dir);
 	4. Initialize local dir as a Git repo (this makes it a LOCAL REPO):
 		% git init
@@ -160,12 +165,10 @@ Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub
 								** 'commit' will commit the tracked changes to local repo & prepare them to be pushed to a Remote repo;
 
 	7. COPY remote repo URL:
-<<<<<<< HEAD
+
 		At top of the Remote Repo's "Quick Setup" page, click the copy symbol (a clipboard icon) to copy;
-=======
-		On the Remote Repo's "<Code>" tab, click the CLONE button to copy;
->>>>>>> 0c8c39ac300d49ccfacc89bd70c1e8964d531d26
-		** the correct URL ends in '.git';
+
+		On the Remote Repo's "<Code>" tab, click the CLONE button to copy;		** the correct URL ends in '.git';
 
 	8. Set & verify the Remote repo URL:
 		% git remote add origin <remote repo URL>	** Sets the remote repo URL as the ORIGIN;
@@ -177,11 +180,10 @@ Adding files from Local repo (aka Local Client) to a NEW remote repo (aka GitHub
 
 
 	9. 'Push' the changes in local branch TO remote branch (GitHub):
-<<<<<<< HEAD
-		% git push origin master			** Pushes the changes in local branch (speficied as Master) TO the remote branch (specified as the Origin);
-=======
+		% git push origin master			** Pushes the changes in local branch (specified as Master) TO the remote branch (specified as the Origin);
+
 		% git push origin master			** Pushes the changes in local branch TO the remote branch specified as the Origin
->>>>>>> 0c8c39ac300d49ccfacc89bd70c1e8964d531d26
+
 
 
 Disconnect local repo branch from Remote master:
