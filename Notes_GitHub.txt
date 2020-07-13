@@ -199,3 +199,11 @@ Other useful Git commands:
 	% git push -u origin master
 	% git rm --cached <file>...			** to un-stage a file (ie. undo a 'git add' command;
 		% git rm -f --cached <file>...		** uses '-f' to force Git to un-stage the file;
+
+
+
+===========================
+Items/Comments to verify:
+===========================
+A) If you do git config --add push.default current, then git push will automatically create the branch in the remote repo if necessary.
+
