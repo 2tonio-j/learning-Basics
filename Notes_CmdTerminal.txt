@@ -7,6 +7,10 @@ Terminal (aka "Command Line") Notes <Windows>:
 -clear screen:
 	>cls
 
+-Launch Git Bash (from directory containing git-bash.exe)
+	@ c:\Program Files\Git
+	>git-bash.exe			** Git Bash runs in LINUX **
+
 -Output application version currently installed:
 	>[keyword] -v		** Works for specific application keywords (ex/ 'ruby', 'node', 'npm', 'jekyll')
 	OR
