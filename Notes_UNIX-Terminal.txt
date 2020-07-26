@@ -13,7 +13,11 @@ Open terminal:
 
 Close terminal:
 	CMD + Q
-	
+
+Open NEW terminal window (a new tab) from command line:
+	open -a terminal /path/to/whatever	** Opens new terminal tab at specified directory;
+	CNTRL + N				** Opens new terminal tab at home directory;
+
 Check system memory:
 	% df -h
 
@@ -24,6 +28,12 @@ List directory contents:
 		-S	sorts by size;
 		-p	places / at end of each subdirectory;
 		-t	sorts by last modified;
+
+Check current version of:
+	NPM:		npm --v		OR wpm -version
+	Jekyll:		jekyll --v  	OR jekyll -version
+	Node js:	node --v  	OR node -version
+	Bootstrap:	
 
 
 Find files:
@@ -115,6 +125,10 @@ Move directories:
 Copy directories:
 	% cp -R <source_folder> <destination_folder>
 
+
+Create a NEW (blank) text file from terminal:
+	1. Navigate to target directory
+		% touch MyFile.txt			** Replace 'MyFile' with text file name and keep .txt extension;
 
 **********************************************
 Exit Git's Per-user configuration file
