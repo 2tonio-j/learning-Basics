@@ -47,6 +47,23 @@ Find files:
 												     ( NOTE: '/' specifies the Root directory );
 												'*' specifies all files containing the pattern 'Terminal.rtf'
 
+	% find where-to-look criteria action 2>/dev/null		** The ' 2>/dev/null' will filter out all error messages created by find command;
+												The error messages (aka FD #2) are redirected to /dev/null;
+												Items in the /dev/null directory get discarded by the system;
+
+	% find /path/to/dir -name "search-pattern"  2>&1 | grep -v "Permission denied"		** Excludes all “permission denied” messages from “find” command
+	% find /path/to/dir -iname "search-pattern" 2>&1 | grep -v "Operation not permitted"		'-iname' means search pattern is NOT case-sensitive
+
+
+	% find /path/to/dir -iname "search-pattern" 2>&1 | grep -v "Permission denied\|Operation not permitted" 
+		...PRODUCES SIMILAR RESULTS AS...
+	% find where-to-look criteria action 2>/dev/null
+
+
+	% find /path/to/dir -name "search-pattern"  2>&1 | grep -v "Permission denied" > output-file	** Stores output in the output-file (ex/ output.txt);
+	% cat output-file										** This command lets you view the output-file;
+
+
 Search for multiple words in single line:
 	% grep 'word1\|word2\|word3' /path/to/file			** remember, '\' in UNIX/LINUX means IGNORE the NEXT character;			
 	% grep 'word*' *.txt						** Search all text files;
@@ -68,6 +85,34 @@ Check (Test) if a file exists:
 		'-f' checks if target exists (must be a regular file);
 		'-e' also checks if target exists (can be a directory OR file);
 		'&& echo' returns (outputs) whatever comes next;
+
+
+Display, Create, or Modify text files from Terminal:
+	'cat' <concatenate> command
+
+	% cat filename  OR  cat path/to/file		** View the text file;
+	
+	% cat > filename				** Stores submitted input in the specified file;
+	  [CNTL+D to exit]						'>' tells system that whatever is typed next gets stored in the file;
+									Press [CNTL+D] to stop storing input.
+
+	% cat bigfile | more  OR  more bigfile		** Use to display more of a large file (fills more than entire screen);
+	% cat bigfile | less  OR  less bigfile		** Use to display less of a large file (fills more than entire screen);
+
+	% cat score1.txt teams.txt > report.txt		** Combine 2 or more files & create a new file;
+
+	% cat >>filename				** Append (add data to existing file) WITHOUT opening the file;
+	  [CNTL+D to exit]						Only lets you ADD TO the file; must open the file to delete or modify;
+									Press [CNTL+D] to stop storing input.
+									
+	% cat -n filename  OR				** Will number all output lines;	
+	% cat --number filename
+
+
+	% cat filename | command			
+
+	% cat filename | grep something
+
 
 
 Display list of all running processes:
@@ -231,6 +276,4 @@ Running Static Site Generator using Jekyll:
 serve your project to localhost:4000
 	% bundle exec jekyll serve		** jekyll commands begin with 'bundle exec';
 						** exit site serve mode using CTRL+C;
-
-
 
