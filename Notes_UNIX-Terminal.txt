@@ -35,6 +35,21 @@ Check current version of:
 	Node js:	node --v  	OR node -version
 	Bootstrap:	
 
+Create new directories:
+	% mkdir path/to/new/dir	
+
+
+Create multiple new directories:
+	% mkdir -p (main dir loc)/{Pattern1,Pattern2,Pattern...}	** '-p' flag tells mkdir cmd to create main directory first, if it does not exist yet;
+												targets listed with {} comprise BRACE EXPANSION LIST;
+	% mkdir -p htg/{Articles,Images,Note,Done}			** Example: 'htg' is the MAIN DIRECTORY and 'Article,Images,Note,Done' are the new
+												subdirectories being created.
+
+Create multiple new directories, CONTAINING subdirectories:
+
+	% mkdir -p (main dir)/{Pattern1/{pattern3,pattern4},Pattern2}	** use NESTED Brace Expansion Lists to create subdirectories within newly created directories;
+	% mkdir -p htg/{articles/{new,rewrites},images,notes,done}	** Example: '/{...}' nested within brace expansion list will specify subdirectories to be created.
+
 
 Find files:
 	% find (starting dir) (matching criteria and actions)		** This is the general form;
@@ -161,6 +176,8 @@ Move file(s) into a directory:
 	% mv file1.ext directory
 	% mv old_name.ext new_name.ext
 	% mv old_name.ext directory/new_name.ext
+	% mv file1.txt file.2.txt file3.txt directory
+	% mv *.txt directory
 
 
 Move directories:
