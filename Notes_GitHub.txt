@@ -79,8 +79,8 @@ To remove .git folder AND disconnect local repo from remote repo:
 	@ "c:\Program Files\Git\git-bash.exe"						** Git Bash runs in LINUX **
 
 	2. Remove the .git directory.
-		% rm -rf path/to/local_repo/.git					** -r (recursive: actiion will apply to directory & its contents);
-											   -f (force: ignores nonexistant files & arguments & DOES NOT PROMPT prior to action);
+		% rm -rf path/to/local_repo/.git					** -r (recursive: action will apply to directory & its contents);
+											   -f (force: ignores non-existant files & arguments & DOES NOT PROMPT prior to action);
 
 
 Renaming a LOCAL BRANCH to repo Remote branch master (using Terminal)

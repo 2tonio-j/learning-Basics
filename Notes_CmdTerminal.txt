@@ -92,6 +92,12 @@ Terminal (aka "Command Line") Notes <Windows>:
 	>taskkill /PID x## /PID Y## /PID Z##			** 'PID' means Process ID;
 	>taskkill /FI "windowtitle eq abc*" /t			** 'FI' means Filter;		** /t applies the cmd to all child processes started by the trgt app;
 
+-Check system memory (RAM) details using 'wmic' cmd:
+	>wmic Memorychip get BankLabel,DeviceLocator,Capacity,Speed
+
+-Check system memory (RAM, aka Physical Memory) using 'systeminfo' cmd:
+	>systeminfo | findstr /c:"Total Physical Memory"
+
 
 -Execute multiple commands from a SINGLE cmd line entry:
 	>command1 & command2 & ...	**Executes Command2 after Command1 finishes executing;
