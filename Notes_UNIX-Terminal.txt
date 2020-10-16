@@ -192,6 +192,11 @@ Create a NEW (blank) text file from terminal:
 	1. Navigate to target directory
 		% touch MyFile.txt			** Replace 'MyFile' with text file name and keep .txt extension;
 
+
+Display list of user short names on current server:
+	% dscl . -list /Users				** results WITHOUT underscore ('_') are actual users.
+
+
 **********************************************
 Exit Git's Per-user configuration file
 	% shift+z, shift+z  (capital Z twice)
