@@ -1,9 +1,14 @@
 GitHub Notes:
 
+Reference sites:
+https://www.youtube.com/watch?v=3fUbBnN_H2c   				//*Github for beginners (Amigoscode);
+https://www.atlassian.com/git/tutorials/setting-up-a-repository
+https://www.cloudbees.com/blog/remote-origin-already-exists-error
+
 To clone a remote repository (repo) onto a local repository (my computer):
   1. Copy the web URL for the remote repo you want (using 'Clone or Download' button under '<> Code' tab on GitHub account)
   2. On local machine, navigate to desired location for Local Repo; then type:
-	>git clone insert_copied/web/URL_here
+	>git clone insert_copied/web/URL_here target/directory/here
 
 To determine which repo BRANCH you are currently using:
 	>git status	**NOTE: must be in a directory containing a cloned repository (a Local Repo).
@@ -32,10 +37,10 @@ Committing changes to a Remote Repo from a Local Repo is a 3-step process:
 	>git push					**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
 
 	From Git Bash...
-	% git push origin master			** Pushes the changes in local branch (called master) TO the remote branch (called origin);
+	% git push -u origin master			** Pushes the changes in local branch (called master) TO the remote branch (called origin);
 
 	>git push <name for remote repo> <remote repo branch>	**NOTE: this command will update the Remote Repo with the new commits that were executed on Local Repo.
-	>git push origin master
+	>git push -u origin master
 
 
 
